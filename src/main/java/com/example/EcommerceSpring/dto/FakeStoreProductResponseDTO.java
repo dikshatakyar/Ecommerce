@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FakeStoreProductsOfCategoryResponseDTO {
+public class FakeStoreProductResponseDTO {
     private String title;
     private double price;
     private String description;
