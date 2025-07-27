@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IProductGateway {
     List<FakeStoreProductResponseDTO> getAllProductsOfCategory(String category) throws IOException;
+    FakeStoreProductResponseDTO getProductDetails(int id) throws IOException;
 }

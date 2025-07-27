@@ -11,16 +11,21 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products/category")
+@RequestMapping("/api/products")
 public class ProductController {
-    private final IProductService productsOfCategoryService;
+    private final IProductService productService;
 
-    public ProductController(IProductService productsOfCategoryService){
-        this.productsOfCategoryService = productsOfCategoryService;
+    public ProductController(IProductService productService){
+        this.productService = productService;
     }
 
-    @GetMapping("/{categoryName}")
+    @GetMapping("/category/{categoryName}")
     public List<FakeStoreProductResponseDTO> getAllProductsOfCategories(@PathVariable String categoryName) throws IOException {
-        return this.productsOfCategoryService.getAllProductsOfCategory(categoryName);
+        return this.productService.getAllProductsOfCategory(categoryName);
+    }
+
+    @GetMapping("/{id}")
+    public FakeStoreProductResponseDTO getProductDetails(@PathVariable int id) throws IOException{
+        return this.productService.getProductDetails(id); //to get single product details
     }
 }
