@@ -30,7 +30,7 @@ public class RetrofitConfig {
     }
 
     @Bean
-    public FakeStoreProductsApi fakeStoreProductsofCategoryApi(Retrofit retrofit2){
+    public FakeStoreProductsApi fakeStoreProductsApi(Retrofit retrofit2){
         return retrofit2.create(FakeStoreProductsApi.class);
     }
 

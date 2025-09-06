@@ -4,10 +4,8 @@ import com.example.EcommerceSpring.dto.CategoryDTO;
 import com.example.EcommerceSpring.services.FakestoreCategoryService;
 import com.example.EcommerceSpring.services.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,8 +21,16 @@ public class CategoryController{
     }
 
     @GetMapping
-    public List<CategoryDTO> getAllCategories() throws IOException {
-        return this.categoryService.getAllCategories();
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
+        List<CategoryDTO> result = this.categoryService.getAllCategories();
+        return ResponseEntity.ok(result);
+//        return ResponseEntity.created(null).body(result);
     }
+
+    @PostMapping
+    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO){
+        throw new UnsupportedOperationException("Method not implemented yet");
+    }
+
 
 }
