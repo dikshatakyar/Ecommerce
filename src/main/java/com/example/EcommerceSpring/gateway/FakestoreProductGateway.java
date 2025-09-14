@@ -1,6 +1,7 @@
 package com.example.EcommerceSpring.gateway;
 
 import com.example.EcommerceSpring.dto.FakeStoreProductResponseDTO;
+import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.gateway.api.FakeStoreProductDetailsApi;
 import com.example.EcommerceSpring.gateway.api.FakeStoreProductsApi;
 import org.springframework.stereotype.Component;
@@ -32,8 +33,8 @@ public class FakestoreProductGateway implements IProductGateway {
     }
 
     @Override
-    public FakeStoreProductResponseDTO getProductDetails(int id) throws IOException {
-       FakeStoreProductResponseDTO response = fakeStoreProductDetailsApi.getProductDetails(id).execute().body();
+    public ProductDTO getProductDetails(long id) throws IOException {
+       ProductDTO response = fakeStoreProductDetailsApi.getProductDetails(id).execute().body();
 
        if(response == null){
            throw new IOException("API failed");

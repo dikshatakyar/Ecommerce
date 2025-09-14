@@ -1,16 +1,13 @@
-package com.example.EcommerceSpring.entity;
+package com.example.EcommerceSpring.dto;
 
-import com.example.EcommerceSpring.dto.RatingDTO;
-import jakarta.persistence.Entity;
 import lombok.*;
 
-@Entity
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class Product extends BaseEntity{
+@AllArgsConstructor
+public class ProductDTO{
     private String image;
     private String color;
     private int price;

@@ -1,11 +1,10 @@
 package com.example.EcommerceSpring.controllers;
 
 import com.example.EcommerceSpring.dto.FakeStoreProductResponseDTO;
+import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.services.IProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,7 +24,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public FakeStoreProductResponseDTO getProductDetails(@PathVariable int id) throws IOException{
+    public ProductDTO getProductDetails(@PathVariable long id) throws Exception{
         return this.productService.getProductDetails(id); //to get single product details
+    }
+
+    @PostMapping
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO dto){
+        return ResponseEntity.ok(productService.createProduct(dto));
     }
 }

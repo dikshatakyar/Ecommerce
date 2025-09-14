@@ -18,7 +18,7 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment this value
-    private long id;
+    private Long id;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

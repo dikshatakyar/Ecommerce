@@ -1,6 +1,7 @@
 package com.example.EcommerceSpring.gateway;
 
 import com.example.EcommerceSpring.dto.FakeStoreProductResponseDTO;
+import com.example.EcommerceSpring.dto.ProductDTO;
 import com.google.gson.Gson;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -25,7 +26,7 @@ public class OkHttpProductGateway implements  IProductGateway{
     }
 
     @Override
-    public FakeStoreProductResponseDTO getProductDetails(int id) throws IOException {
+    public ProductDTO getProductDetails(long id) throws IOException {
         Request request = new Request.Builder().url("https://fakestoreapi.com/products/" + id).build();
 
         try(Response response = okHttpClient.newCall(request).execute()){
@@ -34,7 +35,7 @@ public class OkHttpProductGateway implements  IProductGateway{
             }
             String json = response.body().string();
             Gson gson = new Gson();
-            return gson.fromJson(json, FakeStoreProductResponseDTO.class);
+            return gson.fromJson(json, ProductDTO.class);
         }
     }
 }
