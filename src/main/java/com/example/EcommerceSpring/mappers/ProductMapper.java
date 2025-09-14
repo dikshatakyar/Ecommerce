@@ -1,4 +1,4 @@
-package com.example.EcommerceSpring.mapper;
+package com.example.EcommerceSpring.mappers;
 
 import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.entity.Product;

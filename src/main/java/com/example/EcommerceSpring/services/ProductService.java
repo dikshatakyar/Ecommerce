@@ -3,7 +3,7 @@ package com.example.EcommerceSpring.services;
 import com.example.EcommerceSpring.dto.FakeStoreProductResponseDTO;
 import com.example.EcommerceSpring.dto.ProductDTO;
 import com.example.EcommerceSpring.entity.Product;
-import com.example.EcommerceSpring.mapper.ProductMapper;
+import com.example.EcommerceSpring.mappers.ProductMapper;
 import com.example.EcommerceSpring.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
