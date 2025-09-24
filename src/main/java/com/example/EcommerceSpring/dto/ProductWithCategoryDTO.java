@@ -2,12 +2,12 @@ package com.example.EcommerceSpring.dto;
 
 import lombok.*;
 
+@Builder
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO{
+@NoArgsConstructor
+public class ProductWithCategoryDTO {
     private String image;
     private String color;
     private int price;
@@ -19,4 +19,5 @@ public class ProductDTO{
     private Long categoryId;
     private String brand;
     private boolean popular;
+    private CategoryDTO category;
 }

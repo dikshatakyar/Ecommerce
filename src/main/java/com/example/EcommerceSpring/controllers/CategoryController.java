@@ -1,6 +1,7 @@
 package com.example.EcommerceSpring.controllers;
 
 import com.example.EcommerceSpring.dto.CategoryDTO;
+import com.example.EcommerceSpring.dto.CategoryWithAllProductsDTO;
 import com.example.EcommerceSpring.services.FakestoreCategoryService;
 import com.example.EcommerceSpring.services.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class CategoryController{
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
+    public ResponseEntity<?> getAllCategories(@RequestParam(required = false) String name) throws Exception {
+        if(name != null &&  !name.isBlank()){
+            CategoryDTO categoryDTO = categoryService.getByName(name);
+            return ResponseEntity.ok(categoryDTO);
+        }
         List<CategoryDTO> result = this.categoryService.getAllCategories();
         return ResponseEntity.ok(result);
     }
@@ -30,5 +35,10 @@ public class CategoryController{
     public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO){
         CategoryDTO newCategory = this.categoryService.createCategory(categoryDTO);
         return ResponseEntity.ok(newCategory);
+    }
+
+    @GetMapping("{id}/products")
+    public ResponseEntity<CategoryWithAllProductsDTO> getAllProductsOfCategory(@PathVariable Long id) throws Exception{
+        return ResponseEntity.ok(categoryService.getAllProductsOfCategory(id));
     }
 }
