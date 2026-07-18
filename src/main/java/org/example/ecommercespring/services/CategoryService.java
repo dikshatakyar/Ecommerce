@@ -19,7 +19,7 @@ public class CategoryService implements ICategoryService {
 
 
     @Override
-    public List<CategoryDTO> getAllCategories() throws IOException {
+    public List<CategoryDTO> getAllCategories() {
        List<CategoryDTO> dto = new ArrayList<>();
        for(Category category: repo.findAll()){
            dto.add(CategoryMapper.toDTO(category));
