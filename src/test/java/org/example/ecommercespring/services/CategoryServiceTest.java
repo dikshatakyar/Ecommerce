@@ -50,4 +50,21 @@ public class CategoryServiceTest {
         verify(categoryRepository, times(1)).findAll();
 
     }
+
+
+    @Test
+    void createCategory_shouldReturnCreatedCategory(){
+
+        //arrange
+        Category category = Category.builder().name("Shoes").build();
+        category.setId(1L);
+
+        when(categoryRepository.save(any(Category.class))).thenReturn(category);
+
+        //act
+        CategoryDTO result = categoryService.createCategory(CategoryDTO.builder().name("Shoes").build());
+
+        //assert
+        assertEquals(result.getName(), "Shoes");
+    }
 }
